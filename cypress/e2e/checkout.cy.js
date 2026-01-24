@@ -3,6 +3,8 @@
 import { email, senha } from '../fixtures/adm.json'
 import produtosPage, { buscar_produto } from '../support/page-objects/produtos.page'
 
+//checkout utilizando Page Objects
+
 describe('Funcionalidade checkout', () => {
     beforeEach(() => {
         cy.setCookie('ebacStoreVersion', 'v2');
