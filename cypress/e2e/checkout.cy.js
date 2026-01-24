@@ -1,21 +1,25 @@
 /// <reference types="cypress"/>
 
 import { email, senha } from '../fixtures/adm.json'
-import produtosPage, { buscar_produto } from '../support/page-objects/produtos.page'
 
-//checkout utilizando Page Objects
+//checkout utilizando App Actions
 
-describe('Funcionalidade checkout', () => {
+describe('App Actions - Funcionalidade checkout', () => {
     beforeEach(() => {
         cy.setCookie('ebacStoreVersion', 'v2');
         cy.login( email, senha );
         cy.visit('/')
+
     });
     it('Deve validar produto no carrinho', () => {
-        var produto = 'tênis esportivo'
-        produtosPage.buscar_produto(produto);
-        produtosPage.adicionar_produto();
-        cy.get('[data-testid="remove"]').should('exist')
+        var produtoId = "67e2bf49ad0a28d184fb08d4"
+        var quantidade = 1
+
+        cy.carrinho(produtoId, quantidade);
+
+        cy.window().then((win) => {
+        expect(win.localStorage.getItem('token')).to.not.be.null;
+    });
 
     });
 });

@@ -24,18 +24,37 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (email, senha) =>{
-    cy.request({
-      method: "POST",
-      url: "http://lojaebac.ebaconline.art.br/public/authUser",
-      body:{
-        email: email,
-        password: senha
-      }
-    }).then((response) =>{
-      expect(response.status).to.eq(200);
+Cypress.Commands.add('login', (email, senha) => {
+  cy.request({
+    method: "POST",
+    url: "http://lojaebac.ebaconline.art.br/public/authUser",
+    body: {
+      email: email,
+      password: senha
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
 
-      const token = response.body.data.token;
-      window.localStorage.setItem('token', token)
-    })
+    const token = response.body.data.token;
+    window.localStorage.setItem('token', token)
+  })
+});
+Cypress.Commands.add('perfil', () => {
+
+  cy.setCookie('ebacStoreVersion', 'v2')
+  cy.visit('/')
+  cy.get('[href="/Tab/Account"]').click()
+  cy.get('[data-testid="signUp"] > .css-146c3p1').click()
+});
+Cypress.Commands.add('carrinho', (produtoId, quantidade)=>{
+  cy.request({
+    method: 'PUT',
+    url:'http://lojaebac.ebaconline.art.br/public/updateCart/6974247caa3ae7fc3998d86f',
+    body:{
+      productId: produtoId, 
+      quantity: quantidade
+    }
+  }).then((response)=>{
+    expect(response.status).to.eq(200)
+  })
 })

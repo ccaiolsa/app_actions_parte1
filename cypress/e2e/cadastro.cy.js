@@ -6,10 +6,7 @@ const usuario = require('../support/page-objects/cadastro.page')
 describe('Page Objects - Funcionalidade login', () => {
 
     beforeEach(() => {
-        cy.setCookie('ebacStoreVersion', 'v2')
-        cy.visit('/')
-        cy.get('[href="/Tab/Account"]').click()
-        cy.get('[data-testid="signUp"] > .css-146c3p1').click()
+        cy.perfil();
     });
 
     it('validar cadastro de novos usuários', () => {
