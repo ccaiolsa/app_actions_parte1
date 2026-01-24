@@ -1,0 +1,15 @@
+{
+  "name": "app_action_test",
+  "version": "1.0.0",
+  "description": "aplicação de app actions no site da lojaebac",
+  "license": "ISC",
+  "author": "caio lucas",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "dependencies": {
+    "cypress": "^15.9.0"
+  }
+}
