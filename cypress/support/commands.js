@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
 Cypress.Commands.add('login', (email, senha) => {
   cy.request({
     method: "POST",
@@ -56,5 +57,6 @@ Cypress.Commands.add('carrinho', (produtoId, quantidade)=>{
     }
   }).then((response)=>{
     expect(response.status).to.eq(200)
+
   })
 })

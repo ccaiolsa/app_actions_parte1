@@ -1,7 +1,7 @@
 {
-  "name": "app_action_test",
+  "name": "variaveis-de-ambiente-mais-cy-intercept",
   "version": "1.0.0",
-  "description": "aplicação de app actions no site da lojaebac",
+  "description": "aplicação de cy.intercept para simular a resposta de uma API",
   "license": "ISC",
   "author": "caio lucas",
   "type": "commonjs",

@@ -1,0 +1,6 @@
+{
+  "lowToHigh": "getProducts?sortBy=LTH",
+  "highToLow": "getProducts?sortBy=HTL",
+  "alfabetica": "getProducts?sortBy=alphabetical"
+}
+

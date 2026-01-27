@@ -1,0 +1,39 @@
+{
+    "success": true,
+    "cart": {
+        "_id": "69743b0eaa3ae7fc3998e010",
+        "products": [
+            {
+                "productId": {
+                    "_id": "67e2bf49ad0a28d184fb08d4",
+                    "photos": [
+                        "https://via.placeholder.com/300"
+                    ],
+                    "name": "Tênis Esportivo",
+                    "price": 199.99,
+                    "quantity": 36,
+                    "specialPrice": 150
+                },
+                "quantity": 1,
+                "_id": "69744248aa3ae7fc3998e184"
+            },
+            {
+                "productId": {
+                    "_id": "67ace3f70cf0a913258b3f08",
+                    "name": "Teste",
+                    "price": 120,
+                    "photos": [
+                        "https://www.zipmaster.com/wp-content/uploads/2022/04/Reusable-Cloth-Shopping-Bags-Rainbow-Pack-200-Case-Reusable-Bags-B26-061-3-1000x1000.jpg.web"
+                    ],
+                    "quantity": 10
+                },
+                "quantity": 1,
+                "_id": "6978224864e6177fd641fa41"
+            }
+        ],
+        "userId": "695ab550bebd10a47fb2576a",
+        "createdAt": "2026-01-24T03:22:54.398Z",
+        "updatedAt": "2026-01-27T02:29:24.274Z",
+        "__v": 0
+    }
+}
