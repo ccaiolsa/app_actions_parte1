@@ -1,8 +1,9 @@
 /// <reference types="cypress"/>
 
-import { highToLow, lowToHigh, alfabetica } from '../fixtures/qa/adm.json'
-import { products } from '../fixtures/filtro.json'
-import { selecionar_filtro, acessar_filtro } from '../support/page-objects/filtro.page'
+import { products } from '../fixtures/lista_produtos_LH.json'
+const { filtrar }=require('../support/page-objects/filtro.page')
+const { cart } =require('../fixtures/carrinho.json')
+const { success } =require('../fixtures/resposta.json')
 
 describe('Teste UI utilizando Variáveis de Ambiente', () => {
     beforeEach(() => {
@@ -11,16 +12,26 @@ describe('Teste UI utilizando Variáveis de Ambiente', () => {
         cy.get('[data-testid="search-products"]').click()
 
     });
-    it.only('Deve validar itens ao filtrar a pesquisa Low to High', () => {
-        cy.intercept('GET', `**/public/${Cypress.env(lowToHigh)}`)
-        cy.get('[data-testid="SortBy"]').click()
-        cy.get('[style="flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;"] > .css-146c3p1').eq(1).click()
-        cy.get('[data-testid="productDetails"]').should('have.length.greaterThan', 1)
+    it('Deve validar itens ao filtrar a pesquisa Low to High', () => {
+        cy.intercept('GET', `**/public/getProducts?sortBy=LTH`, {fixture: 'lista_produtos.LH.json'})
+        filtrar.selecionar_filtro().should('have.length.above', 10)
     });
 
     it('Deve validar itens adicionado no carrinho', () => {
-        
+        cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {fixture: 'carrinho.json'})
+        filtrar.selecionar_filtro()
+        filtrar.selecionar_produto(2,2)
+        cy.get('[data-testid="productName"]').should('exist')
 
+    });
+
+    it('Deve remover produto do carrinho', () => {
+        cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {fixture: 'resposta.json'})
+        filtrar.selecionar_filtro()
+        filtrar.selecionar_produto(2,2)
+        filtrar.remover_produto()
+        cy.get('[data-testid="emptyCart"]').should('exist')
+    
     });
     
 });
