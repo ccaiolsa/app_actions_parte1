@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 0,
+    "pending": 0,
+    "failures": 3,
+    "start": "2026-02-06T15:16:31.898Z",
+    "end": "2026-02-06T15:16:57.023Z",
+    "duration": 25125,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "30c35ff2-8a3a-40f2-b940-4ab81c6053c7",
+      "title": "",
+      "fullFile": "cypress\\e2e\\produtos.cy.js",
+      "file": "cypress\\e2e\\produtos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1c2e74c0-b51f-423c-8ced-fb7ffbe882f6",
+          "title": "Teste UI utilizando Variáveis de Ambiente",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve validar itens ao filtrar a pesquisa Low to High",
+              "fullTitle": "Teste UI utilizando Variáveis de Ambiente Deve validar itens ao filtrar a pesquisa Low to High",
+              "timedOut": null,
+              "duration": 7997,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\produtos.cy.js\\\\Teste UI utilizando Variáveis de Ambiente -- Deve validar itens ao filtrar a pesquisa Low to High (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.intercept('GET', `**/public/getProducts?sortBy=LTH`, {\n  fixture: 'lista_produtos.LH.json'\n});\nfiltrar.selecionar_filtro().should('have.length.above', 10);",
+              "err": {
+                "message": "Error: An error was thrown while processing a network event: A fixture file could not be found at any of the following paths:\n\n    > cypress\\fixtures\\lista_produtos.LH.json\n    > cypress\\fixtures\\lista_produtos.LH.json.[ext]\n\nCypress looked for these file extensions at the provided path:\n\n    > .json, .js, .coffee, .html, .txt, .csv, .png, .jpg, .jpeg, .gif, .tif, .tiff, .zip\n\nProvide a path to an existing fixture file.",
+                "estack": "Error: An error was thrown while processing a network event: A fixture file could not be found at any of the following paths:\n\n    > cypress\\fixtures\\lista_produtos.LH.json\n    > cypress\\fixtures\\lista_produtos.LH.json.[ext]\n\nCypress looked for these file extensions at the provided path:\n\n    > .json, .js, .coffee, .html, .txt, .csv, .png, .jpg, .jpeg, .gif, .tif, .tiff, .zip\n\nProvide a path to an existing fixture file.\n    at get (<embedded>:2819:137277)\n    at async E (<embedded>:2416:106582)\n    at async (<embedded>:2416:113040)",
+                "diff": null
+              },
+              "uuid": "8eb16d5a-8efa-4821-8417-9ec81d9d97ce",
+              "parentUUID": "1c2e74c0-b51f-423c-8ced-fb7ffbe882f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve validar itens adicionado no carrinho",
+              "fullTitle": "Teste UI utilizando Variáveis de Ambiente Deve validar itens adicionado no carrinho",
+              "timedOut": null,
+              "duration": 8104,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\produtos.cy.js\\\\Teste UI utilizando Variáveis de Ambiente -- Deve validar itens adicionado no carrinho (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {\n  fixture: 'carrinho.json'\n});\nfiltrar.selecionar_filtro();\nfiltrar.selecionar_produto(2, 2);\ncy.get('[data-testid=\"productName\"]').should('exist');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[style=\"flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;\"] > .css-146c3p1`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[style=\"flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;\"] > .css-146c3p1`, but never found it.\n    at Object.selecionar_filtro (webpack://variaveis-de-ambiente-mais-cy-intercept/./cypress/support/page-objects/filtro.page.js:6:11)\n    at Context.eval (webpack://variaveis-de-ambiente-mais-cy-intercept/./cypress/e2e/produtos.cy.js:22:16)",
+                "diff": null
+              },
+              "uuid": "5253046e-8195-4eaa-a0de-dab65c6919c0",
+              "parentUUID": "1c2e74c0-b51f-423c-8ced-fb7ffbe882f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve remover produto do carrinho",
+              "fullTitle": "Teste UI utilizando Variáveis de Ambiente Deve remover produto do carrinho",
+              "timedOut": null,
+              "duration": 8616,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\produtos.cy.js\\\\Teste UI utilizando Variáveis de Ambiente -- Deve remover produto do carrinho (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {\n  fixture: 'resposta.json'\n});\nfiltrar.selecionar_filtro();\nfiltrar.selecionar_produto(2, 2);\nfiltrar.remover_produto();\ncy.get('[data-testid=\"emptyCart\"]').should('exist');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[style=\"flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;\"] > .css-146c3p1`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[style=\"flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;\"] > .css-146c3p1`, but never found it.\n    at Object.selecionar_filtro (webpack://variaveis-de-ambiente-mais-cy-intercept/./cypress/support/page-objects/filtro.page.js:6:11)\n    at Context.eval (webpack://variaveis-de-ambiente-mais-cy-intercept/./cypress/e2e/produtos.cy.js:30:16)",
+                "diff": null
+              },
+              "uuid": "ba81eb9e-0f44-417b-9b2b-484167548819",
+              "parentUUID": "1c2e74c0-b51f-423c-8ced-fb7ffbe882f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8eb16d5a-8efa-4821-8417-9ec81d9d97ce",
+            "5253046e-8195-4eaa-a0de-dab65c6919c0",
+            "ba81eb9e-0f44-417b-9b2b-484167548819"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 24717,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reporterOptions": {
+          "charts": true,
+          "reportPageTitle": "custom-title",
+          "embeddedScreenshots": true,
+          "inlineAssets": true,
+          "saveAllAttempts": false
+        },
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.3.2"
+    }
+  }
+}

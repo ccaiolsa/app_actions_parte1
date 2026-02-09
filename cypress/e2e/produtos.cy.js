@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import { products } from '../fixtures/lista_produtos_LH.json'
+const {fixture}=require('../fixtures/lista_produtos_LH.json')
 const { filtrar }=require('../support/page-objects/filtro.page')
 const { cart } =require('../fixtures/carrinho.json')
 const { success } =require('../fixtures/resposta.json')
@@ -9,11 +9,11 @@ describe('Teste UI utilizando Variáveis de Ambiente', () => {
     beforeEach(() => {
         cy.setCookie('ebacStoreVersion', Cypress.env("ebacStoreVersion"));
         cy.visit('/')
-        cy.get('[data-testid="search-products"]').click()
+        cy.get('[data-testid="search-products"]', {timeout:2000}).click()
 
     });
     it('Deve validar itens ao filtrar a pesquisa Low to High', () => {
-        cy.intercept('GET', `**/public/getProducts?sortBy=LTH`, {fixture: 'lista_produtos.LH.json'})
+        cy.intercept('GET', `**/public/getProducts?sortBy=LTH`, {fixture: 'lista_produtos_LH.json'})
         filtrar.selecionar_filtro().should('have.length.above', 10)
     });
 
