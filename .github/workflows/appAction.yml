@@ -20,4 +20,9 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npx cypress run
+          record: true
+          env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKE: ${{ secrets.GITHUB_TOKEN }}
+
 
