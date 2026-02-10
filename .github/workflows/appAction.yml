@@ -1,0 +1,23 @@
+name: app_action_test
+
+on: 
+  push:
+    branches:
+    - main
+jobs:
+  cypress-run:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: dependencias
+        uses: actions/setup-node@v6.2.0
+        with:
+         node-version: 22
+         
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npx cypress run
