@@ -14,12 +14,12 @@ describe('Teste UI utilizando Variáveis de Ambiente', () => {
     });
     it('Deve validar itens ao filtrar a pesquisa Low to High', () => {
         cy.intercept('GET', `**/public/getProducts?sortBy=LTH`, {fixture: 'lista_produtos_LH.json'})
-        filtrar.selecionar_filtro().should('have.length.above', 10)
+        filtrar.selecionar_filtro('Price -- Low to high').should('have.length.above', 10)
     });
 
     it('Deve validar itens adicionado no carrinho', () => {
         cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {fixture: 'carrinho.json'})
-        filtrar.selecionar_filtro()
+        filtrar.selecionar_filtro('Price -- Low to high')
         filtrar.selecionar_produto(2,2)
         cy.get('[data-testid="productName"]').should('exist')
 
@@ -27,7 +27,7 @@ describe('Teste UI utilizando Variáveis de Ambiente', () => {
 
     it('Deve remover produto do carrinho', () => {
         cy.intercept('PUT', `**/public/updateCart/${cart._id}`, {fixture: 'resposta.json'})
-        filtrar.selecionar_filtro()
+        filtrar.selecionar_filtro('Price -- Low to high')
         filtrar.selecionar_produto(2,2)
         filtrar.remover_produto()
         cy.get('[data-testid="emptyCart"]').should('exist')

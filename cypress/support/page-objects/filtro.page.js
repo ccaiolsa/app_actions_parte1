@@ -1,9 +1,9 @@
 /// <reference types="cypress"/>
 
 export const filtrar = {
-    selecionar_filtro(){
-        cy.get('[data-testid="SortBy"]', {timeout: 4000}).click()
-        cy.get('[style="flex-direction: row; align-items: center; justify-content: space-between; flex: 1 1 0%;"] > .css-146c3p1').eq(1).click()
+    selecionar_filtro(nomeFiltro){
+        cy.get('[data-testid="SortBy"]', {timeout: 5000}).click()
+        cy.get('.r-13hkvm').contains(nomeFiltro).click()
         return cy.get('[data-testid="productDetails"]')
     },
     selecionar_produto(linha, coluna){
