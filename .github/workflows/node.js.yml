@@ -18,8 +18,9 @@ jobs:
     - name: cypress
       uses: cypress-io/github-action@v6.5.0
       with:
-        build: npm rum build
+        build: npm run build
         start: npm start
+        record: true
         browser: chrome
       env:
         CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
