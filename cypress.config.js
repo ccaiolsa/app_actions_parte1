@@ -13,6 +13,9 @@ module.exports = defineConfig({
       saveAllAttempts: false,
   },
   e2e: {
+    defaultCommandTimeout: 10000,
+    pageLoadTimeout: 30000,
+
     baseUrl: 'http://lojaebac.ebaconline.art.br/',
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on)
