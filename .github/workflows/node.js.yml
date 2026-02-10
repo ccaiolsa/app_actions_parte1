@@ -1,0 +1,26 @@
+name: Cypress CI
+
+on:
+  push:
+    branches: [ "git_action" ]
+  pull_request:
+    branches: [ "git_action" ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: 
+      image: cypress/browsers:22.15.0
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    - name: cypress
+      uses: cypress-io/github-action@v6.5.0
+      with:
+        build: npm rum build
+        start: npm start
+        browser: chrome
+      env:
+        CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
