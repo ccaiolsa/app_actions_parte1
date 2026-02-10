@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "npx cypress run --record"
   },
   "dependencies": {
     "cypress": "^15.9.0"
