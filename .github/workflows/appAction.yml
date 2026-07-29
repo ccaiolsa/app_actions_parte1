@@ -21,7 +21,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
-          command: npx cypress run 
           record: true
           env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
