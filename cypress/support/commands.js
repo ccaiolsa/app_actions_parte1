@@ -36,6 +36,7 @@ Cypress.Commands.add('login', (email, senha) => {
     expect(response.status).to.eq(200);
 
     const token = response.body.data.token;
+    const userId = response.body.data._id;
     window.localStorage.setItem('token', token)
   })
 });
@@ -46,10 +47,10 @@ Cypress.Commands.add('perfil', () => {
   cy.get('[href="/Tab/Account"]').click()
   cy.get('[data-testid="signUp"] > .css-146c3p1').click()
 });
-Cypress.Commands.add('carrinho', (produtoId, quantidade)=>{
+Cypress.Commands.add('carrinho', (produtoId, quantidade, userId)=>{
   cy.request({
     method: 'PUT',
-    url:'http://lojaebac.ebaconline.art.br/public/updateCart/6974247caa3ae7fc3998d86f',
+    url:`http://lojaebac.ebaconline.art.br/public/updateCart/${userId}`,
     body:{
       productId: produtoId, 
       quantity: quantidade
