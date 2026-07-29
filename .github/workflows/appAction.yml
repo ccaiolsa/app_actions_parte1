@@ -19,9 +19,9 @@ jobs:
          node-version: 22
          
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
-          command: npx cypress run
+          command: npx cypress run 
           record: true
           env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
